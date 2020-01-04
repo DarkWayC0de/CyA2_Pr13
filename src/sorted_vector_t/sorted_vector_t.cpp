@@ -1,5 +1,4 @@
 #include "sorted_vector_t.h"
-
 #include <climits>
 #include <iomanip>
 
@@ -15,7 +14,6 @@ void sorted_vector_t::write( std::ostream& os) const {
   os << "> ";
 }
 
-
 void sorted_vector_t::merge_sort_r(int l, int r) {
   if (l < r) {
     int c = (l + r) / 2;
@@ -24,7 +22,6 @@ void sorted_vector_t::merge_sort_r(int l, int r) {
     merge(l, c, r);
   }
 }
-
 
 ////////////////////////////////////////////////////////////////////////////
 // FUSIÓN CON CENTINELA
@@ -58,8 +55,30 @@ void sorted_vector_t::merge(const std::vector<int> &v1, const std::vector<int> &
   }
 }
 
-////////////////////////////////////////////////////////////////////////////
+////////////////// FORMA iterativa
+void sorted_vector_t::merge_sort_i() {
+  merge_sort_i(0, size() - 1);
+}
 
+void sorted_vector_t::merge_sort_i(int l, int r) {
+  int kI = 2;
+  int final_dispar;
+  for ( ; kI <= r ; kI = kI*2) {
+    for (int inicio = l; inicio < r ; ) {
+      int final = inicio + kI-1;
+      if (!(inicio >= r || final > r)) {
+        merge(inicio, (inicio + final) / 2, final);
+        final_dispar =final;
+      }
+      inicio = final+1;
+    }
+  }
+  if(final_dispar != r) {
+    merge(l, final_dispar, r);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////
 
 std::ostream& operator<<(std::ostream& os, const sorted_vector_t& v) {
   v.write(os);

@@ -23,7 +23,7 @@ int main() {
   int a;
   std::cin >> a;
   if( a == 1){
-
+    v.merge_sort_i();
   } else {
     v.merge_sort_r();
   }

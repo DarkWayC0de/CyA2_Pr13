@@ -15,12 +15,15 @@
   explicit sorted_vector_t(const vector<int>& v): vector<int>(v) {}
   ~sorted_vector_t() = default;
   void merge_sort_r();
+  void merge_sort_i();
+
   void write(std::ostream& os) const;
 
  private:
   void create_vector_sentinel(int l, int r, vector<int>& v);
   void merge(const vector<int>& v1, const vector<int>& v2, int l);
   void merge_sort_r(int l, int r);
+  void merge_sort_i(int l, int r);
   void merge(int l, int c, int d);
 };
 
