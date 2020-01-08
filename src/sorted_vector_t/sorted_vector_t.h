@@ -16,11 +16,12 @@
   ~sorted_vector_t() = default;
   void merge_sort_r();
   void merge_sort_i();
+  void testOrdenado();
 
   void write(std::ostream& os) const;
 
  private:
-  void create_vector_sentinel(int l, int r, vector<int>& v);
+  void extraerVector(int l, int r, vector<int>& v);
   void merge(const vector<int>& v1, const vector<int>& v2, int l);
   void merge_sort_r(int l, int r);
   void merge_sort_i(int l, int r);

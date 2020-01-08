@@ -27,6 +27,8 @@ int main() {
   } else {
     v.merge_sort_r();
   }
+
   std:: cout << "Vector ya ordenado\n" << v << std::endl;
+  v.testOrdenado();
   return 0;
 }

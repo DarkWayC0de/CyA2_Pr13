@@ -27,7 +27,7 @@ void sorted_vector_t::merge_sort_r(int l, int r) {
 // FUSIÓN CON CENTINELA
 ////////////////////////////////////////////////////////////////////////////
 
-void sorted_vector_t::create_vector_sentinel(int l, int r, vector<int>& v) {
+void sorted_vector_t::extraerVector(int l, int r, vector<int>& v) {
   for (int kI = l; kI <= r; ++kI) {
     v.push_back(this ->at(kI));
   }
@@ -36,8 +36,8 @@ void sorted_vector_t::create_vector_sentinel(int l, int r, vector<int>& v) {
 void sorted_vector_t::merge(int l, int c, int d) {
   std::vector<int> copiavector1;
   std::vector<int> copiavector2;
-  create_vector_sentinel(l,c,copiavector1);
-  create_vector_sentinel(c+1,d,copiavector2);
+  extraerVector(l, c, copiavector1);
+  extraerVector(c + 1, d, copiavector2);
   merge(copiavector1,copiavector2,l);
 }
 
@@ -76,6 +76,22 @@ void sorted_vector_t::merge_sort_i(int l, int r) {
   if(final_dispar != r) {
     merge(l, final_dispar, r);
   }
+}
+void sorted_vector_t::testOrdenado() {
+  int elemento1, elemento2;
+  bool correcto= true;
+  elemento1 = this -> at(0);
+  std::cout<<"Test de Ordenacion\n< ";
+  for (int kI = 1; kI < this-> size() ; ++kI) {
+    elemento2 =at(kI);
+    int diferencia = elemento2-elemento1;
+    std::cout<<diferencia<<" ";
+    if(diferencia<0){
+      correcto = false;
+    }
+  }
+  std::cout<<">\n";
+  std::cout<< ((correcto)?"Correcto":"Incorrecto");
 }
 
 ////////////////////////////////////////////////////////////////////////////
